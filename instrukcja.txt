@@ -36,7 +36,8 @@ II.5 Contract create
 
 truffle create contract xxxContract
 
-II.6 Contract deploy file
+
+II.6 Contract deploy file - migrations folder
 
 2_deploy_contracts.js
 
@@ -69,9 +70,7 @@ npm i -g create-react-app
 # new repo
 github.com - new repo
 
-# clone
-Ctr+Shift+P
-git:Clone
+# see github section
 
 // only if not cloned from git 
 mkdir drizzle-react-tutorial
