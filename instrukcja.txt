@@ -136,6 +136,39 @@ npm i drizzle
 
 III. DApp build
 
+#index.js
+// import drizzle functions and contract artifact
+import { Drizzle, generateStore } from "drizzle";
+import CertyficateCreator from "./contracts/CertyficateCreator.json";
+
+// let drizzle know what contracts we want
+const options = { contracts: [CertyficateCreator] };
+
+// setup the drizzle store and drizzle
+const drizzleStore = generateStore(options);
+const drizzle = new Drizzle(options, drizzleStore);
+
+// pass in the drizzle instance
+ReactDOM.render(<App drizzle={drizzle} />, document.getElementById("root"));
+
+#App.js
+// import drizzle functions and contract artifact
+import { Drizzle, generateStore } from "drizzle";
+import myContract from "./contracts/myContract.json";
+
+// let drizzle know what contracts we want
+const options = { contracts: [myContract] };
+
+// setup the drizzle store and drizzle
+const drizzleStore = generateStore(options);
+const drizzle = new Drizzle(options, drizzleStore);
+
+// pass in the drizzle instance
+ReactDOM.render(<App drizzle={drizzle} />, document.getElementById("root"));
+
+
+
+
 
 
 IX. Git 

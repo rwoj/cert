@@ -6,10 +6,10 @@ import * as serviceWorker from './serviceWorker';
 
 // import drizzle functions and contract artifact
 import { Drizzle, generateStore } from "drizzle";
-import CertyficateCreator from "./contracts/CertyficateCreator.json";
+import CertificateCreator from "./contracts/CertificateCreator.json";
 
 // let drizzle know what contracts we want
-const options = { contracts: [CertyficateCreator] };
+const options = { contracts: [CertificateCreator] };
 
 // setup the drizzle store and drizzle
 const drizzleStore = generateStore(options);

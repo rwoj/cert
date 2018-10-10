@@ -1,12 +1,12 @@
 pragma solidity ^0.4.24;
 
 
-contract CertyficateCreator{
+contract CertificateCreator{
     //dynamic array with addresses of deployed auctions
     address[] public certificates; 
     
-    function createCertificate(uint _quantityOfCertificate) public{
-        address newCertificate = new Certyficate(msg.sender, _quantityOfCertificate);
+    function createCertificate() public{
+        address newCertificate = new Certificate(msg.sender);
         certificates.push(newCertificate);
     }
 }
@@ -30,23 +30,24 @@ contract ERC20Interface {
     //event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
 }
 
-contract Certyficate is ERC20Interface{
+contract Certificate is ERC20Interface{
     address public owner;
     uint public quantity;
     mapping(address => uint) public balances;
     
-    struct CertyficateDetails {
+    struct CertificateDetails {
         string description;
         uint liczba;
     }
-    CertyficateDetails public certyficateDetails;
+    CertificateDetails public certificateDetails;
     
   
     event Transfer(address indexed _from, address indexed _to, uint _quantity);
 
 
-    constructor(address _owner, uint _quantity) public{
-        quantity = _quantity;
+    constructor(address _owner) public{
+        // quantity = _quantity;
+        quantity = 100;
         owner = _owner;
         balances[owner] = quantity;
     }
@@ -56,14 +57,14 @@ contract Certyficate is ERC20Interface{
         _;
     } 
 
-    function enterCertyficateDetails(string _description, uint _liczba) public onlyOwner returns (bool success){
-        certyficateDetails.description = _description;
-        certyficateDetails.liczba = _liczba;
+    function enterCertificateDetails(string _description, uint _liczba) public onlyOwner returns (bool success){
+        certificateDetails.description = _description;
+        certificateDetails.liczba = _liczba;
         return true;
     }    
     
     function getCerfificateDetails() public view returns(string description, uint liczba ){
-        return (certyficateDetails.description, certyficateDetails.liczba);
+        return (certificateDetails.description, certificateDetails.liczba);
     }
     
     function totalSupply() public view returns (uint){
