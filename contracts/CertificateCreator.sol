@@ -4,8 +4,8 @@ pragma solidity ^0.4.24;
 contract CertificateCreator{
     //dynamic array with addresses of deployed auctions
     address[] public certificates; 
-    
-    function createCertificate() public{
+
+    function createCertificate() public {
         address newCertificate = new Certificate(msg.sender);
         certificates.push(newCertificate);
     }
@@ -72,20 +72,19 @@ contract Certificate is ERC20Interface{
     }
     
     function balanceOf(address _owner) public view returns (uint _ownerBalance){
-         return balances[_owner];
-     }
+        return balances[_owner];
+    }
      
      
     //transfer from the owner balance to another address
     function transfer(address to, uint _quantity) public returns (bool success){
-         require(balances[msg.sender] >= _quantity && _quantity > 0);
+        require(balances[msg.sender] >= _quantity && _quantity > 0);
          
-         balances[to] += _quantity;
-         balances[msg.sender] -= _quantity;
+        balances[to] += _quantity;
+        balances[msg.sender] -= _quantity;
          
-         emit Transfer(msg.sender, to, _quantity);
+        emit Transfer(msg.sender, to, _quantity);
          
-         return true;
-     }
-    
+        return true;
+    }
 }

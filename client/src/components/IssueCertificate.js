@@ -1,20 +1,18 @@
 import React from "react";
-import Certificate from "./../contracts/Certificate.json";
+// import Certificate from "./../contracts/Certificate.json";
 
 class IssueCertificate extends React.Component {
   state = { stackId: null };
   
-  componentDidMount() {
-    const { drizzle, drizzleState } = this.props;
-    console.log(drizzle);
-    console.log(drizzleState);
-  }
+  // componentDidMount() {
+  //   const { drizzle, drizzleState } = this.props;
+  // }
 
   handleKeyDown = e => {
     // if the enter key is pressed, set the value with the string
     if (e.keyCode === 13) {
       // this.setValue(e.target.value);
-      this.setValue(15);
+      this.setValue('15');
     }
   };
 
@@ -22,14 +20,12 @@ class IssueCertificate extends React.Component {
     const { drizzle, drizzleState } = this.props;
     const contract = drizzle.contracts.CertificateCreator;
     
-    const contractConfig = {
-      
-    }
-
+    console.log("heja", drizzleState.accounts[0]);
     // let drizzle know we want to call the `set` method with `value`
-    // const stackId = contract.methods["createCertificate"].cacheSend({
-    //   gas: 50000000000, from: drizzleState.accounts[0]
-    // });
+    const stackId = contract.methods.createCertificate.cacheSend({
+     from: drizzleState.accounts[0], 
+    });
+    // from: "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 
     // save the `stackId` for later reference
     this.setState({ stackId });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import IssueCertificate from "./components/IssueCertificate";
+import MyCertificates from "./components/MyCertificates";
 
 class App extends Component {
   state = { loading: true, drizzleState: null };
@@ -33,6 +34,9 @@ class App extends Component {
       <IssueCertificate 
         drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}
       />
+      {/* <MyCertificates 
+        drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}
+      /> */}
     </div>
     );
   }
